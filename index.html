@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<div class="post-list mdl-grid mdl-cell mdl-cell--9-col">
+{% for post in paginator.posts %}
+<div class="mdl-card mdl-cell mdl-cell--4-col">
+  <div class="mdl-card__media mdl-color-text--grey-50" style="background-image: url({{ post.thumbnail | prepend: '/thumbnails/' | prepend: site.baseurl }});">
+    <h3 class="mdl-typography--title mdl-typography--font-bold mdl-color--black"><a class="mdl-color-text--white" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+  </div>
+  <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+    <div class="minilogo" style="background-image: url({{ post.github | prepend :'https://avatars.githubusercontent.com/' }});"></div>
+    <div>
+      <strong>{{ post.author}}</strong>
+      <span>{{ post.theme }}</span>
+    </div>
+  </div>
+</div>
+{% if forloop.index == 2 or forloop.index == 15 %}
+<div class="mdl-card mdl-cell mdl-cell--4-col mdl-typography--text-center">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- AdSense1_300x250_as -->
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:300px;height:250px"
+       data-ad-client="ca-pub-8569868884936647"
+       data-ad-slot="6378260811"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+{% endif %}
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}<!-- Pagination links -->
+<nav class="post-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="post-nav__button">
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation" data-upgraded=",MaterialButton,MaterialRipple">
+      <i class="material-icons">arrow_back</i>
+      <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+      Newer
+    </a>
+    {% endif %}
+    <div class="section-spacer"></div>
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="post-nav__button">
+      Older
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">arrow_forward</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+      </a>
+  {% endif %}
+</nav>
+{% endif %}
+</div>

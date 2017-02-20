@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    {% include header.html %}
+    <main class="mdl-layout__content mdl-color--grey-200">
+        {{ content }}
+      {% include footer.html %}
+      {% include scripts.html %}
+      {% if page.layout != 'page' or page.url == '/' %}
+      <a class="submit-button" href="/submit">
+      <button id="menu-lower-right" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-color-text--white">
+        <i class="material-icons">add</i>
+      </button>
+      </a>
+      {% endif %}
+    </main>
+    </div>
+  </body>
+</html>
