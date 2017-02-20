@@ -1,0 +1,122 @@
+---
+layout: default
+---
+<div class="post mdl-grid mdl-cell mdl-cell--9-col">
+  <div class="mdl-grid mdl-cell mdl-cell--12-col">
+    <article itemscope itemtype="http://schema.org/BlogPosting" class="mdl-card mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <header class="mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col">
+        <div style="background-image: url({{ page.thumbnail | prepend: '/thumbnails/' | prepend: site.baseurl }});" class="thumbnail mdl-cell mdl-cell--4-col-desktop mdl-cell--3-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+
+        </div>
+        <div class="meta mdl-cell mdl-cell--8-col-desktop mdl-cell--5-col-tablet mdl-cell--4-col-phone mdl-color--blue-grey-600">
+          <div class="mdl-card__supporting-text mdl-color-text--white">
+            <h3 class="post-title" itemprop="name headline">{{ page.title }}</h3>
+            <time class="visuallyhidden" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+              {{ page.date | date: "%b %-d, %Y" }}
+            </time>
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+              Author : <strong itemprop="name">{{ page.author }}</strong>
+            </span>
+            <p>License : {{ page.license }}</p>
+          </div>
+        </div>
+        <!-- Right aligned menu below button -->
+        <button id="menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--white">
+          <i class="material-icons">share</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url | append: site.baseurl | append: page.url }}"><li class="mdl-menu__item">Facebook</li></a>
+          <a href="http://www.linkedin.com/cws/share?url={{ site.url | append: site.baseurl | append: page.url }}"><li class="mdl-menu__item">Linkedin</li></a>
+          <a href="https://twitter.com/intent/tweet?text={{ page.url | prepend: site.baseurl | prepend: site.url }} - {{page.title}} by @{{ page.author }}" target="_blank"><li class="mdl-menu__item">Tweet</li></a>
+          <a href="https://plus.google.com/share?url={{ site.url | append: site.baseurl | append: page.url }}"><li class="mdl-menu__item">Google Plus</li></a>
+          <a href="http://pinterest.com/pin/create/link/?url={{ page.url | prepend: site.baseurl | prepend: site.url }}" target="_blank"><li class="mdl-menu__item">Pinterest</li></a>
+        </ul>
+
+      </header>
+      <div class="mdl-grid mdl-cell mdl-cell--12-col mdl-color--grey-100">
+        {% if page.demo %}
+        <a class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone" href="{{ page.demo }}" target="_blank" rel="nofollow">
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--12-col">
+            Demo
+          </button>
+        </a>
+        {% else %}
+        <span class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+          <button class="mdl-button mdl-js-button mdl-cell mdl-cell--12-col" disabled>
+            Demo
+          </button>
+        </span>
+        {% endif %}
+        {% if page.download %}
+        <a class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone" href="{{ page.download }}" target="_blank" rel="nofollow">
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--12-col">
+            Download
+          </button>
+        </a>
+        {% else %}
+        <span class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+          <button class="mdl-button mdl-js-button mdl-cell mdl-cell--12-col" disabled>
+            Download
+          </button>
+        </span>
+        {% endif %}
+        {% if page.repository %}
+        <a class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone" href="{{ page.repository }}" target="_blank" rel="nofollow">
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--12-col">
+            Fork
+          </button>
+        </a>
+        {% else %}
+        <span class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+          <button class="mdl-button mdl-js-button mdl-cell mdl-cell--12-col" disabled>
+            Fork
+          </button>
+        </span>
+        {% endif %}
+        {% if page.license_link %}
+        <a class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone" href="{{ page.license_link }}" target="_blank" rel="nofollow">
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-cell mdl-cell--12-col">
+            License
+          </button>
+        </a>
+        {% else %}
+        <span class="mdl-cell mdl-cell--3-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+          <button class="mdl-button mdl-js-button mdl-cell mdl-cell--12-col" disabled>
+            License
+          </button>
+        </span>
+        {% endif %}
+      </div>
+      {% capture words %}{{ content | number_of_words }}{% endcapture %}
+      {% if words != '0' %}
+      <div class="mdl-card mdl-cell mdl-cell--12-col" itemprop="articleBody">
+        <div class="content mdl-cell mdl-cell--12-col mdl-color-text--grey-700 mdl-card__supporting-text">
+        {{ content }}
+        </div>
+      </div>
+      {% endif %}
+      <div class="mdl-cell mdl-cell--12-col mdl-color--grey-200 mdl-typography--text-center">
+        {% if site.ads %}{% if page.url != '/404.html' %}{% include ad.html %}{% endif %}{% endif %}
+      </div>
+    </article>
+  </div>
+    <nav class="post-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url | prepend: site.baseurl }}" class="post-nav__button">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">arrow_back</i>
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+        Older
+      </a>
+      {% endif %}
+      <div class="section-spacer"></div>
+      {% if page.next.url %}
+      <a href="{{ page.previous.url | prepend: site.baseurl }}" class="post-nav__button">
+        Newer
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation" data-upgraded=",MaterialButton,MaterialRipple">
+          <i class="material-icons">arrow_forward</i>
+          <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></button>
+        </a>
+    {% endif %}
+  </nav>
+</div>

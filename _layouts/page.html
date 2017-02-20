@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<div class="page mdl-grid mdl-cell mdl-cell--9-col">
+  <div class="mdl-grid mdl-cell mdl-cell--12-col">
+    <article class="mdl-card mdl-grid mdl-grid--no-spacing mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      {% if page.title %}
+      <header class="mdl-cell mdl-cell--12-col mdl-typography--text-center">
+        <h1 class="post-title">{{ page.title }}</h1>
+      </header>
+      {% endif %}
+      <div class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-cell mdl-cell--12-col mdl-color-text--grey-700 mdl-card__supporting-text">
+          {{ content }}
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
